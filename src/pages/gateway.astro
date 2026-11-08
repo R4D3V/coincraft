@@ -16,7 +16,7 @@ const slug = (a: string) => a.toLowerCase().replace(/ /g, "-");
         <a class="app rv" href={`https://getartcraft.com/apps/${slug(a)}`} target="_blank" rel="noopener">
           <span class="cat">{appMeta[a].cat}</span>
           <span class="ic"><Icon name={appMeta[a].icon} size={18} /></span>
-          <div><b>{a}</b><small>Open source · Rust</small><p class="txt">{appMeta[a].blurb}</p></div>
+          <div><b>{a}</b><small>Open source · Rust</small><p class="txt">{appMeta[a].blurb}</p><p class="detail">{appMeta[a].detail}</p></div>
         </a>
       ))}
     </div>
