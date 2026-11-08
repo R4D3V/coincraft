@@ -64,9 +64,35 @@ const cards = [
     <div class="three">
       {cards.map((c) => <a class="card rv" href={c.href}><span class="k">{c.k}</span><h3>{c.t}</h3><p>{c.p}</p></a>)}
     </div>
-    <Stats />
-    <div class="dex-wrap rv">
-      <iframe class="dex-chart" src="https://dexscreener.com/solana/5yyfNYbP1WnkZDyB6UwtAZtbgo48joJgXU9Kai7Dpump?embed=1&theme=dark&chartLeftToolbar=0&chartTheme=dark" title="COIN CRAFT DexScreener chart" loading="lazy" allow="clipboard-write"></iframe>
+    <div class="lab rv" style="margin-top:40px;margin-bottom:16px">Live market · Solana</div>
+    <div class="livestats" id="live-stats">
+      <div class="stat rv"><strong id="live-price">—</strong><span class="lab">Price (USD)</span></div>
+      <div class="stat rv"><strong id="live-change">—</strong><span class="lab">24h change</span></div>
+      <div class="stat rv"><strong id="live-volume">—</strong><span class="lab">Volume 24h</span></div>
+      <div class="stat rv"><strong id="live-liq">—</strong><span class="lab">Liquidity</span></div>
+      <div class="stat rv"><strong id="live-slot">—</strong><span class="lab">Chain slot</span></div>
+    </div>
+    <p class="lead" style="max-width:60ch;margin:24px auto 0;font-size:13px" id="live-note">Figures come from outside feeds as received. None of this is advice of any kind.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <div class="lab rv">Why now</div>
+    <h2 data-split>Built for the next wave of creators.</h2>
+    <p class="lead rv">Open-source tools, a community-owned coin, and a clear path from genesis to listings. The pieces are in place — the upside is in the execution.</p>
+    <div class="three" style="margin-top:40px">
+      <div class="card rv"><span class="k">01</span><h3>Open source edge</h3><p>Every app is public on GitHub. Auditable code, forkable, no lock-in. Trust compounds.</p></div>
+      <div class="card rv"><span class="k">02</span><h3>Community owned</h3><p>Holders shape the roadmap. Bounties, votes, and a gallery of work made with Craft apps.</p></div>
+      <div class="card rv"><span class="k">03</span><h3>Listing momentum</h3><p>Binance, OKX and Bybit are targets. Each confirmed listing is announced the moment it's official.</p></div>
+    </div>
+    <div class="stats" style="margin-top:48px">
+      <div class="stat rv"><strong data-n="16" data-s="">16</strong><span class="lab">Open-source apps</span></div>
+      <div class="stat rv"><strong data-n="3" data-s="">3</strong><span class="lab">OS platforms</span></div>
+      <div class="stat rv"><strong data-n="0" data-s="">0</strong><span class="lab">Subscriptions</span></div>
+      <div class="stat rv"><strong data-n="100" data-s="%">100%</strong><span class="lab">Community owned</span></div>
+    </div>
+    <div class="cta rv" style="margin-top:40px;justify-content:center">
+      <a class="btn p" data-mag href="/buy">Get in early <Icon name="arrow-up-right" size={15} /></a>
+      <a class="btn" data-mag href="/listings">View listings <Icon name="arrow-right" size={15} /></a>
     </div>
   </div></section>
 
@@ -88,6 +114,9 @@ const cards = [
   <Faq />
   <Cta />
 </Base>
+<script>
+  import "../scripts/market.ts";
+</script>
 <script>
   document.getElementById("copy")?.addEventListener("click", async (e) => {
     const b = e.currentTarget as HTMLButtonElement;

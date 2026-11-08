@@ -1,7 +1,7 @@
 ---
-const { label, title, lead } = Astro.props;
+const { label, title, lead, bg } = Astro.props;
 ---
-<header class="inner"><div class="wrap">
+<header class="inner" style={bg ? `background:linear-gradient(rgba(11,11,12,.72),rgba(11,11,12,.88)),url(${bg}) center/cover no-repeat;` : undefined}><div class="wrap">
   <div class="lab hero-fade"><b>●</b> {label}</div>
   <h1 data-split style="margin-top:28px;font-size:clamp(44px,8vw,112px)">{title}</h1>
   <p class="lead hero-fade" style="margin-top:28px">{lead}</p>

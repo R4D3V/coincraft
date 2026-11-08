@@ -2,17 +2,79 @@
 import Base from "../layouts/Base.astro";
 import PageHead from "../components/PageHead.astro";
 import Cta from "../components/Cta.astro";
+import Icon from "../components/Icon.astro";
 import { phases } from "../data/site";
 const cls = (s: string) => (s === "In progress" ? "progress" : s.toLowerCase());
 ---
 <Base title="Roadmap" description="Four phases, from genesis and fair launch to CEX listings and holder-driven open-source bounties. Follow the COIN CRAFT roadmap.">
   <PageHead label="Roadmap" title="From meme to movement." lead="Four phases, from genesis to holder-driven open-source bounties." />
   <section class="sec" style="border:0"><div class="wrap">
-    <div class="road" style="margin-top:0"><div class="fill"></div>
-      {phases.map((p) => (
-        <div class="ph"><span class="lab">{p.tag}</span><h3>{p.title}</h3><span class={`status ${cls(p.status)}`}>{p.status}</span><ul>{p.items.map((i) => <li>{i}</li>)}</ul></div>
+    <div class="roadmap rv">
+      <div class="roadmap-line" aria-hidden="true"><i class="roadmap-fill"></i></div>
+      {phases.map((p, i) => (
+        <article class={`phase rv phase-${cls(p.status)}`} data-phase style={`--i:${i}`}>
+          <div class="phase-node" aria-hidden="true"><span></span></div>
+          <div class="phase-card">
+            <div class="phase-head">
+              <span class="phase-tag">{p.tag}</span>
+              <span class={`status ${cls(p.status)}`}>{p.status}</span>
+            </div>
+            <h3>{p.title}</h3>
+            <ul class="phase-items">
+              {p.items.map((it) => (
+                <li><Icon name="check" size={14} /> {it}</li>
+              ))}
+            </ul>
+          </div>
+        </article>
       ))}
+    </div>
+  </div></section>
+  <section class="sec"><div class="wrap">
+    <div class="lab rv">Why now</div>
+    <h2 data-split>Built for the next wave of creators.</h2>
+    <p class="lead rv">Open-source tools, a community-owned coin, and a clear path from genesis to listings. The pieces are in place — the upside is in the execution.</p>
+    <div class="three" style="margin-top:40px">
+      <div class="card rv"><span class="k">01</span><h3>Open source edge</h3><p>Every app is public on GitHub. Auditable code, forkable, no lock-in. Trust compounds.</p></div>
+      <div class="card rv"><span class="k">02</span><h3>Community owned</h3><p>Holders shape the roadmap. Bounties, votes, and a gallery of work made with Craft apps.</p></div>
+      <div class="card rv"><span class="k">03</span><h3>Listing momentum</h3><p>Binance, OKX and Bybit are targets. Each confirmed listing is announced the moment it's official.</p></div>
+    </div>
+    <div class="stats" style="margin-top:48px">
+      <div class="stat rv"><strong data-n="16" data-s="">16</strong><span class="lab">Open-source apps</span></div>
+      <div class="stat rv"><strong data-n="3" data-s="">3</strong><span class="lab">OS platforms</span></div>
+      <div class="stat rv"><strong data-n="0" data-s="">0</strong><span class="lab">Subscriptions</span></div>
+      <div class="stat rv"><strong data-n="100" data-s="%">100%</strong><span class="lab">Community owned</span></div>
+    </div>
+    <div class="cta rv" style="margin-top:40px;justify-content:center">
+      <a class="btn p" data-mag href="/buy">Get in early <Icon name="arrow-up-right" size={15} /></a>
+      <a class="btn" data-mag href="/listings">View listings <Icon name="arrow-right" size={15} /></a>
     </div>
   </div></section>
   <Cta />
 </Base>
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fill = document.querySelector(".roadmap-fill");
+  const roadmap = document.querySelector(".roadmap");
+  if (roadmap && fill && !reduce) {
+    gsap.fromTo(fill, { scaleY: 0 }, { scaleY: 1, ease: "none",
+      scrollTrigger: { trigger: roadmap, start: "top 70%", end: "bottom 70%", scrub: true } });
+    roadmap.querySelectorAll(".phase").forEach((p) => {
+      ScrollTrigger.create({ trigger: p, start: "top 75%", toggleClass: { targets: p, className: "on" } });
+    });
+  } else if (fill) {
+    (fill as HTMLElement).style.transform = "scaleY(1)";
+    document.querySelectorAll(".phase").forEach((p) => p.classList.add("on"));
+  }
+  // pointer glow on cards
+  document.querySelectorAll<HTMLElement>(".phase-card").forEach((c) => {
+    c.addEventListener("pointermove", (e) => {
+      const r = c.getBoundingClientRect();
+      c.style.setProperty("--mx", `${e.clientX - r.left}px`);
+      c.style.setProperty("--my", `${e.clientY - r.top}px`);
+    });
+  });
+</script>

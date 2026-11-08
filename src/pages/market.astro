@@ -1,16 +1,26 @@
 ---
 import Base from "../layouts/Base.astro";
 import PageHead from "../components/PageHead.astro";
-import Stats from "../components/Stats.astro";
 import Cta from "../components/Cta.astro";
 ---
-<Base title="Market" description="COIN CRAFT live market chart and stats on DexScreener.">
+<Base title="Market" description="COIN CRAFT live market data on Solana. Price, volume, liquidity and chain slot, pulled from outside feeds.">
   <PageHead label="Market" title="Live market." lead="Real-time price, liquidity and volume for COIN CRAFT on Solana." />
   <section class="sec" style="border:0;padding-top:0"><div class="wrap">
-    <Stats />
-    <div class="dex-wrap rv">
+    <div class="lab rv" style="margin-bottom:16px">Live market · Solana</div>
+    <div class="livestats" id="live-stats">
+      <div class="stat rv"><strong id="live-price">—</strong><span class="lab">Price (USD)</span></div>
+      <div class="stat rv"><strong id="live-change">—</strong><span class="lab">24h change</span></div>
+      <div class="stat rv"><strong id="live-volume">—</strong><span class="lab">Volume 24h</span></div>
+      <div class="stat rv"><strong id="live-liq">—</strong><span class="lab">Liquidity</span></div>
+      <div class="stat rv"><strong id="live-slot">—</strong><span class="lab">Chain slot</span></div>
+    </div>
+    <p class="lead" style="max-width:60ch;margin:24px auto 0;font-size:13px" id="live-note">Figures come from outside feeds as received. None of this is advice of any kind.</p>
+    <div class="dex-wrap rv" style="margin-top:32px">
       <iframe class="dex-chart" src="https://dexscreener.com/solana/5yyfNYbP1WnkZDyB6UwtAZtbgo48joJgXU9Kai7Dpump?embed=1&theme=dark&chartLeftToolbar=0&chartTheme=dark" title="COIN CRAFT DexScreener chart" loading="lazy" allow="clipboard-write"></iframe>
     </div>
   </div></section>
   <Cta />
 </Base>
+<script>
+  import "../scripts/market.ts";
+</script>

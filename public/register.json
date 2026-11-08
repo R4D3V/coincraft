@@ -1,0 +1,54 @@
+{
+  "records": {
+    "chain": {
+      "label": "Chain",
+      "state": "stated",
+      "value": "Solana",
+      "rpc": "https://solana-rpc.publicnode.com",
+      "source": "client statement",
+      "scope": "batch-level",
+      "checked": "2026-11-08"
+    },
+    "domain": {
+      "label": "Domain",
+      "state": "stated",
+      "value": "coincraft.cc",
+      "source": "client statement",
+      "checked": "2026-11-08"
+    },
+    "ca": {
+      "label": "Contract address",
+      "state": "stated",
+      "value": "5yyfNYbP1WnkZDyB6UwtAZtbgo48joJgXU9Kai7Dpump",
+      "source": "client statement",
+      "checked": "2026-11-08"
+    },
+    "x": {
+      "label": "X",
+      "state": "stated",
+      "value": "@coincraftcc",
+      "url": "https://x.com/coincraftcc",
+      "source": "client statement",
+      "checked": "2026-11-08"
+    },
+    "github": {
+      "label": "GitHub",
+      "state": "stated",
+      "value": "@storytold",
+      "url": "https://github.com/storytold",
+      "source": "client statement",
+      "checked": "2026-11-08"
+    },
+    "market-source": {
+      "label": "Market feed",
+      "state": "stated",
+      "value": "DexScreener",
+      "boosts": "https://api.dexscreener.com/token-boosts/top/v1",
+      "pairs": "https://api.dexscreener.com/tokens/v1/solana/",
+      "ownPairs": "https://api.dexscreener.com/latest/dex/tokens/",
+      "ownImage": "https://frontend-api.pump.fun/coins/",
+      "source": "client statement",
+      "checked": "2026-11-08"
+    }
+  }
+}

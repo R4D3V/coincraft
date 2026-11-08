@@ -4,12 +4,15 @@ import PageHead from "../components/PageHead.astro";
 import Cta from "../components/Cta.astro";
 import Icon from "../components/Icon.astro";
 import { exchanges } from "../data/site";
+import register from "../data/register.json";
+const caRec = (register.records as any).ca || { state: "absent" };
+const caValue = caRec.state === "stated" && caRec.value ? caRec.value : "pending";
 ---
 <Base title="Listings" description="COIN CRAFT listing targets: Binance, OKX and Bybit. Announcements land here and on our socials the moment each listing is official.">
   <PageHead label="Exchanges" title="Landing on the big three. Soon." lead="Listing targets, not confirmations. We will announce each one here and on our socials the moment it is official." />
   <section class="sec" style="border:0;padding-top:0"><div class="wrap">
     <div class="trust rv">
-      <div><Icon name="file" size={20} /><div><b>Contract</b><span>5yyfNYbP1WnkZDyB6UwtAZtbgo48joJgXU9Kai7Dpump</span></div></div>
+      <div><Icon name="file" size={20} /><div><b>Contract</b><span>{caValue}</span></div></div>
       <div><Icon name="lock" size={20} /><div><b>Liquidity locked</b><span>Liquidity is locked at launch and verifiable on-chain.</span></div></div>
       <div><Icon name="shield" size={20} /><div><b>Verify the source</b><span>Only trust addresses published on this page and our socials.</span></div></div>
     </div>
@@ -21,6 +24,9 @@ import { exchanges } from "../data/site";
         <div class="cx rv"><span class="lab">Tier 1 CEX</span><h3>{e.name}</h3><div class="bar"><i data-w={e.w}></i></div><span class="soon">Soon</span></div>
       ))}
     </div>
+  </div></section>
+  <section class="sec" style="border:0;padding-top:0"><div class="wrap" style="text-align:center">
+    <img src="/og.png" alt="COIN CRAFT" style="max-width:100%;height:auto;border-radius:16px;" class="rv" />
   </div></section>
   <Cta />
 </Base>

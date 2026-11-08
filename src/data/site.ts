@@ -23,7 +23,6 @@ export const appMeta: Record<string, { icon: string; cat: string; blurb: string;
 };
 export const nav = [
   { href: "/gateway", label: "Gateway" },
-  { href: "/buy", label: "Buy" },
   { href: "/market", label: "Market" },
   { href: "/ownership", label: "Ownership" },
   { href: "/roadmap", label: "Roadmap" },

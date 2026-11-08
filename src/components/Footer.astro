@@ -1,6 +1,10 @@
 ---
 import { socials } from "../data/site";
+import register from "../data/register.json";
 import Icon from "./Icon.astro";
+const rec = (id: string) => (register.records as any)[id] || { state: "absent" };
+const isStated = (r: any) => r && r.state === "stated";
+const xR = rec("x"), ghR = rec("github");
 ---
 <footer class="foot"><div class="wrap">
   <div>
@@ -10,9 +14,13 @@ import Icon from "./Icon.astro";
   <div class="links">
     <a href="https://getartcraft.com" target="_blank" rel="noopener">ArtCraft</a>
     <div class="socs">
-      <a class="soc" href={socials.x} target="_blank" rel="noopener" aria-label="X"><Icon name="x" size={15} /></a>
-      <a class="soc" href={socials.github} target="_blank" rel="noopener" aria-label="GitHub"><Icon name="github" size={17} /></a>
-      <a class="soc" href={socials.discord} target="_blank" rel="noopener" aria-label="Discord"><Icon name="discord" size={17} /></a>
+      {isStated(xR) && xR.url
+        ? <a class="soc" href={xR.url} target="_blank" rel="noopener" aria-label="X"><Icon name="x" size={15} /></a>
+        : <span class="soc is-inert" aria-disabled="true" aria-label="X, pending"><Icon name="x" size={15} /></span>}
+      {isStated(ghR) && ghR.url
+        ? <a class="soc" href={ghR.url} target="_blank" rel="noopener" aria-label="GitHub"><Icon name="github" size={17} /></a>
+        : <span class="soc is-inert" aria-disabled="true" aria-label="GitHub, pending"><Icon name="github" size={17} /></span>}
+
     </div>
     <a class="totop" href="#top">Back to top <Icon name="arrow-up" size={14} /></a>
   </div>

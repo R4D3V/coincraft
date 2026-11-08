@@ -8,11 +8,25 @@ const SOL_MINT = "So11111111111111111111111111111111111111112";
 <Base title="Buy" description="Buy COIN CRAFT directly on Solana via Jupiter. Swap SOL for COIN CRAFT in one click.">
   <PageHead label="Buy" title="Buy COIN CRAFT." lead="Swap SOL for COIN CRAFT directly on Solana via Jupiter. No middlemen, no redirects." />
   <section class="sec" style="border:0;padding-top:0"><div class="wrap">
+    <div class="lab rv" style="margin-bottom:16px">Live market · Solana</div>
+    <div class="livestats" id="live-stats">
+      <div class="stat rv"><strong id="live-price">—</strong><span class="lab">Price (USD)</span></div>
+      <div class="stat rv"><strong id="live-change">—</strong><span class="lab">24h change</span></div>
+      <div class="stat rv"><strong id="live-volume">—</strong><span class="lab">Volume 24h</span></div>
+      <div class="stat rv"><strong id="live-liq">—</strong><span class="lab">Liquidity</span></div>
+      <div class="stat rv"><strong id="live-slot">—</strong><span class="lab">Chain slot</span></div>
+    </div>
+    <p class="lead" style="max-width:60ch;margin:24px auto 0;text-align:center;font-size:13px" id="live-note">Figures come from outside feeds as received. On failure you get a dash. Nothing here is advice.</p>
+  </div></section>
+  <section class="sec" style="border:0;padding-top:0"><div class="wrap">
     <div id="jupiter-plugin" style="max-width:480px;margin:0 auto;"></div>
     <p class="lead" style="max-width:60ch;margin:24px auto 0;text-align:center">Connect your Solana wallet and swap. Powered by Jupiter. Always verify the contract address: {TOKEN_MINT}</p>
   </div></section>
   <Cta />
 </Base>
+<script>
+  import "../scripts/market.ts";
+</script>
 <script is:inline src="https://plugin.jup.ag/plugin-v1.js" data-preload defer></script>
 <script is:inline>
   window.onload = function () {
