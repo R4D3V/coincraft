@@ -1,0 +1,31 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHead from "../components/PageHead.astro";
+import Cta from "../components/Cta.astro";
+const TOKEN_MINT = "5yyfNYbP1WnkZDyB6UwtAZtbgo48joJgXU9Kai7Dpump";
+const SOL_MINT = "So11111111111111111111111111111111111111112";
+---
+<Base title="Buy" description="Buy COIN CRAFT directly on Solana via Jupiter. Swap SOL for COIN CRAFT in one click.">
+  <PageHead label="Buy" title="Buy COIN CRAFT." lead="Swap SOL for COIN CRAFT directly on Solana via Jupiter. No middlemen, no redirects." />
+  <section class="sec" style="border:0;padding-top:0"><div class="wrap">
+    <div id="jupiter-plugin" style="max-width:480px;margin:0 auto;"></div>
+    <p class="lead" style="max-width:60ch;margin:24px auto 0;text-align:center">Connect your Solana wallet and swap. Powered by Jupiter. Always verify the contract address: {TOKEN_MINT}</p>
+  </div></section>
+  <Cta />
+</Base>
+<script is:inline src="https://plugin.jup.ag/plugin-v1.js" data-preload defer></script>
+<script is:inline>
+  window.onload = function () {
+    if (window.Jupiter) {
+      window.Jupiter.init({
+        displayMode: "integrated",
+        integratedTargetId: "jupiter-plugin",
+        formProps: {
+          initialInputMint: "So11111111111111111111111111111111111111112",
+          initialOutputMint: "5yyfNYbP1WnkZDyB6UwtAZtbgo48joJgXU9Kai7Dpump",
+          fixedMint: "5yyfNYbP1WnkZDyB6UwtAZtbgo48joJgXU9Kai7Dpump",
+        },
+      });
+    }
+  };
+</script>
