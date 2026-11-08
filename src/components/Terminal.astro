@@ -9,6 +9,18 @@ const defaultLines: [string, string][] = [
   ["✔ 16 apps compiled · 0 telemetry", "ok"],
   ["$ rm -rf subscription && echo yours", "cmd"],
   ["✔ Owned. Forked. Yours.", "ok"],
+  ["", "mut"],
+  ["$ ls apps", "cmd"],
+  ["gateway  ownership  roadmap  listings", "mut"],
+  ["$ cargo test --release", "cmd"],
+  ["✔ 42 tests passed · 0 failed", "ok"],
+  ["$ git status", "cmd"],
+  ["On branch master · working tree clean", "mut"],
+  ["$ vercel --prod", "cmd"],
+  ["✔ Deployed · coincraft.cc", "ok"],
+  ["", "mut"],
+  ["$ echo \"craft the coin, own the code\"", "cmd"],
+  ["craft the coin, own the code", "mut"],
 ];
 const { lines = defaultLines } = Astro.props;
 ---
