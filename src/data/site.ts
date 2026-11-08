@@ -1,7 +1,6 @@
 export const socials = {
   x: "https://x.com/coincraftcc",
   github: "https://github.com/storytold",
-  discord: "https://discord.gg/artcraft",
 };
 export const apps = ["PhotoCraft","VectorCraft","FilmCraft","LightCraft","PdfCraft","EffectCraft","DesignCraft","FigCraft","TextureCraft","MaterialCraft","WordCraft","SoundCraft","DeckCraft","CADCraft","GridCraft","Craft Anything"];
 export const appMeta: Record<string, { icon: string; cat: string; blurb: string; detail: string }> = {
@@ -25,12 +24,13 @@ export const appMeta: Record<string, { icon: string; cat: string; blurb: string;
 export const nav = [
   { href: "/gateway", label: "Gateway" },
   { href: "/buy", label: "Buy" },
+  { href: "/market", label: "Market" },
   { href: "/ownership", label: "Ownership" },
   { href: "/roadmap", label: "Roadmap" },
   { href: "/listings", label: "Listings" },
 ];
 export const phases = [
-  { tag: "Phase 01 · Spark", title: "Genesis", status: "Live", items: ["Website and brand live", "Community on Discord, X and Telegram", "GitHub gateway page for all Craft apps"] },
+  { tag: "Phase 01 · Spark", title: "Genesis", status: "Live", items: ["Website and brand live", "Community on X and Telegram", "GitHub gateway page for all Craft apps"] },
   { tag: "Phase 02 · Forge", title: "Fair launch", status: "In progress", items: ["Token launch and liquidity lock", "Holder dashboard and contract verification", "First community art and meme contests"] },
   { tag: "Phase 03 · Scale", title: "CEX listings", status: "Next", items: ["Applications to OKX, Binance and Bybit", "Listing announcements as each is confirmed", "Marketing push with creators"] },
   { tag: "Phase 04 · Create", title: "Holder perks and bounties", status: "Vision", items: ["Bounties for open-source contributions", "Holder votes on the next Craft app", "Community gallery of work made with Craft apps"] },

@@ -1,0 +1,16 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHead from "../components/PageHead.astro";
+import Stats from "../components/Stats.astro";
+import Cta from "../components/Cta.astro";
+---
+<Base title="Market" description="COIN CRAFT live market chart and stats on DexScreener.">
+  <PageHead label="Market" title="Live market." lead="Real-time price, liquidity and volume for COIN CRAFT on Solana." />
+  <section class="sec" style="border:0;padding-top:0"><div class="wrap">
+    <Stats />
+    <div class="dex-wrap rv">
+      <iframe class="dex-chart" src="https://dexscreener.com/solana/5yyfNYbP1WnkZDyB6UwtAZtbgo48joJgXU9Kai7Dpump?embed=1&theme=dark&chartLeftToolbar=0&chartTheme=dark" title="COIN CRAFT DexScreener chart" loading="lazy" allow="clipboard-write"></iframe>
+    </div>
+  </div></section>
+  <Cta />
+</Base>

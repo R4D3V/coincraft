@@ -7,6 +7,10 @@ import Faq from "../components/Faq.astro";
 import Terminal from "../components/Terminal.astro";
 import Icon from "../components/Icon.astro";
 import { steps } from "../data/site";
+import register from "../data/register.json";
+const caRec = (register.records as any).ca || { state: "absent" };
+const caStated = caRec.state === "stated" && caRec.value;
+const caValue = caStated ? caRec.value : "";
 const cards = [
   { href: "/gateway", k: "A", t: "Gateway", p: "Sixteen open-source apps from ArtCraft, one click from GitHub." },
   { href: "/ownership", k: "B", t: "Ownership", p: "No rent, no middlemen. Fork it, keep it, make it yours." },
@@ -45,7 +49,7 @@ const cards = [
           <a class="btn" data-mag href="https://github.com/storytold" target="_blank" rel="noopener"><Icon name="github" size={16} /> Open source on GitHub</a>
         </div>
         <div class="cta hero-fade" style="margin-top:28px"><span class="chip">No subscription</span><span class="chip">Pure Rust apps</span><span class="chip">macOS · Windows · Linux</span></div>
-        <div class="ca hero-fade" style="margin-top:12px"><span>Contract:</span><span id="ca">5yyfNYbP1WnkZDyB6UwtAZtbgo48joJgXU9Kai7Dpump</span><button id="copy" type="button">Copy</button></div>
+        <div class="ca hero-fade" style="margin-top:12px"><span>Contract:</span>{caStated ? <span id="ca">{caValue}</span> : <span id="ca" class="mut">pending</span>}{caStated ? <button id="copy" type="button">Copy</button> : <button id="copy" type="button" disabled class="is-inert">Copy</button>}</div>
       </div>
       <div class="hero-right hero-fade">
         <Terminal />
@@ -61,6 +65,9 @@ const cards = [
       {cards.map((c) => <a class="card rv" href={c.href}><span class="k">{c.k}</span><h3>{c.t}</h3><p>{c.p}</p></a>)}
     </div>
     <Stats />
+    <div class="dex-wrap rv">
+      <iframe class="dex-chart" src="https://dexscreener.com/solana/5yyfNYbP1WnkZDyB6UwtAZtbgo48joJgXU9Kai7Dpump?embed=1&theme=dark&chartLeftToolbar=0&chartTheme=dark" title="COIN CRAFT DexScreener chart" loading="lazy" allow="clipboard-write"></iframe>
+    </div>
   </div></section>
 
   <section class="sec"><div class="wrap">
