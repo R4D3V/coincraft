@@ -5,7 +5,7 @@
   --font-sans: "Inter Tight Variable", "Inter Tight", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
 }
-html { background: var(--color-bg); color-scheme: dark; }
+html { background: var(--color-bg); color-scheme: dark; overscroll-behavior: none; }
 body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-family: var(--font-sans); line-height: 1.5; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
