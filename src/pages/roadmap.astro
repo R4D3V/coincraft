@@ -1,0 +1,18 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHead from "../components/PageHead.astro";
+import Cta from "../components/Cta.astro";
+import { phases } from "../data/site";
+const cls = (s: string) => (s === "In progress" ? "progress" : s.toLowerCase());
+---
+<Base title="Roadmap" description="Four phases, from genesis and fair launch to CEX listings and holder-driven open-source bounties. Follow the COIN CRAFT roadmap.">
+  <PageHead label="Roadmap" title="From meme to movement." lead="Four phases, from genesis to holder-driven open-source bounties." />
+  <section class="sec" style="border:0"><div class="wrap">
+    <div class="road" style="margin-top:0"><div class="fill"></div>
+      {phases.map((p) => (
+        <div class="ph"><span class="lab">{p.tag}</span><h3>{p.title}</h3><span class={`status ${cls(p.status)}`}>{p.status}</span><ul>{p.items.map((i) => <li>{i}</li>)}</ul></div>
+      ))}
+    </div>
+  </div></section>
+  <Cta />
+</Base>

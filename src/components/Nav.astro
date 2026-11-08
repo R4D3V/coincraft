@@ -1,0 +1,21 @@
+---
+import { nav } from "../data/site";
+import Icon from "./Icon.astro";
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+---
+<header class="nav" id="nav">
+  <div class="wrap row">
+    <a href="/" class="logo"><i></i>COIN CRAFT</a>
+    <ul>
+      {nav.map((n) => <li><a href={n.href} aria-current={path === n.href ? "page" : undefined}>{n.label}</a></li>)}
+    </ul>
+    <a href="/listings" class="btn p buy" data-mag>Buy $CRAFT <Icon name="arrow-up-right" size={15} /></a>
+    <button class="burger" id="burger" type="button" aria-label="Menu">Menu</button>
+  </div>
+</header>
+<script>
+  const nav = document.getElementById("nav");
+  const burger = document.getElementById("burger");
+  burger?.addEventListener("click", () => nav?.classList.toggle("open"));
+  nav?.querySelectorAll("ul a").forEach((a) => a.addEventListener("click", () => nav.classList.remove("open")));
+</script>

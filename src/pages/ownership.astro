@@ -1,0 +1,42 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHead from "../components/PageHead.astro";
+import Stats from "../components/Stats.astro";
+import Cta from "../components/Cta.astro";
+import Icon from "../components/Icon.astro";
+import { compare } from "../data/site";
+const cards = [
+  { k: "A", t: "Open source", p: "Every tool lives on GitHub. Audit it, fork it, extend it." },
+  { k: "B", t: "Yours forever", p: "No subscriptions. What you create and the tools you use stay yours." },
+  { k: "C", t: "Community-first", p: "Holders shape the direction: which apps ship next, which ideas get funded." },
+];
+---
+<Base title="Ownership" description="No rent, no middlemen, no subscriptions. COIN CRAFT is fully open source on GitHub — audit it, fork it, keep it, make it yours.">
+  <PageHead label="Ownership" title="Stop renting from websites." lead="Freedom to create means no middlemen, no rent, no gatekeepers." />
+  <section class="sec" style="border:0"><div class="wrap">
+    <div class="three" style="margin-top:0">
+      {cards.map((c) => <div class="card rv"><span class="k">{c.k}</span><h3>{c.t}</h3><p>{c.p}</p></div>)}
+    </div>
+    <Stats />
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <div class="lab rv">The difference</div>
+    <h2 data-split>Rent the tools. Or own them.</h2>
+    <div class="cmp">
+      <div class="cmp-col rent rv">
+        <h3>Every other suite</h3>
+        <ul>
+          {compare.map((c) => <li><Icon name="close" size={16} /> {c.rent}</li>)}
+        </ul>
+      </div>
+      <div class="cmp-col own rv">
+        <h3><span class="acc">COIN CRAFT</span></h3>
+        <ul>
+          {compare.map((c) => <li><Icon name="check" size={16} /> {c.own}</li>)}
+        </ul>
+      </div>
+    </div>
+  </div></section>
+  <Cta />
+</Base>

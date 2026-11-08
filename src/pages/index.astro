@@ -1,0 +1,92 @@
+---
+import Base from "../layouts/Base.astro";
+import Marquee from "../components/Marquee.astro";
+import Stats from "../components/Stats.astro";
+import Cta from "../components/Cta.astro";
+import Faq from "../components/Faq.astro";
+import Terminal from "../components/Terminal.astro";
+import Icon from "../components/Icon.astro";
+import { steps } from "../data/site";
+const cards = [
+  { href: "/gateway", k: "A", t: "Gateway", p: "Sixteen open-source apps from ArtCraft, one click from GitHub." },
+  { href: "/ownership", k: "B", t: "Ownership", p: "No rent, no middlemen. Fork it, keep it, make it yours." },
+  { href: "/roadmap", k: "C", t: "Roadmap", p: "From genesis to CEX listings and holder bounties." },
+  { href: "/listings", k: "D", t: "Listings", p: "Binance, OKX and Bybit are our targets. Soon." },
+];
+---
+<Base description="COIN CRAFT is the meme coin gateway to open-source tools for artists on GitHub. Built by the ArtCraft team, owned by the community, free to fork forever.">
+  <header class="hero" id="top">
+    <svg class="git" viewBox="0 0 560 720" aria-hidden="true">
+      <path d="M60 660 C 60 520 200 500 200 360 S 200 220 360 220 S 440 140 440 40" />
+      <path d="M200 360 C 200 260 340 260 340 160" />
+      <path d="M200 480 C 90 480 90 380 60 300" />
+      <path d="M360 220 C 500 220 500 320 520 420" />
+      <path d="M200 560 C 340 560 380 620 520 620" />
+      <circle cx="60" cy="660" r="5" />
+      <circle cx="130" cy="592" r="5" />
+      <circle class="acc" cx="200" cy="480" r="5.5" />
+      <circle cx="200" cy="360" r="5" />
+      <circle class="acc" cx="340" cy="160" r="5" style="animation-delay:-1.2s" />
+      <circle cx="360" cy="220" r="5" />
+      <circle cx="440" cy="120" r="5" />
+      <circle class="acc" cx="440" cy="40" r="6" style="animation-delay:-2.1s" />
+      <circle cx="60" cy="300" r="5" />
+      <circle cx="520" cy="420" r="5" />
+      <circle cx="300" cy="560" r="5" />
+      <circle class="acc" cx="520" cy="620" r="5.5" style="animation-delay:-0.6s" />
+    </svg>
+    <div class="wrap">
+    <div class="lab hero-fade"><b>●</b> Meme coin · Open source · Soon on CEX</div>
+    <h1 data-split style="margin-top:28px">Craft the <span class="acc glitch" data-text="coin.">coin.</span><br />Own the code.</h1>
+    <p class="lead hero-fade" style="margin:32px 0 36px">COIN CRAFT is the gateway to open-source tools for artists on GitHub. Built by the ArtCraft team, owned by the community, free to fork forever.</p>
+    <div class="cta hero-fade">
+      <a class="btn p" data-mag href="/listings">Join the launch <Icon name="arrow-up-right" size={15} /></a>
+      <a class="btn" data-mag href="https://github.com/storytold" target="_blank" rel="noopener"><Icon name="github" size={16} /> Open source on GitHub</a>
+    </div>
+    <div class="cta hero-fade" style="margin-top:44px"><span class="chip">No subscription</span><span class="chip">Pure Rust apps</span><span class="chip">macOS · Windows · Linux</span></div>
+    <div class="ca hero-fade"><span id="ca">Contract: announced at launch</span><button id="copy" type="button">Copy</button></div>
+    <Terminal />
+  </div></header>
+
+  <Marquee />
+
+  <section class="sec"><div class="wrap">
+    <div class="lab rv">Explore</div>
+    <h2 data-split>Everything in one craft.</h2>
+    <div class="three">
+      {cards.map((c) => <a class="card rv" href={c.href}><span class="k">{c.k}</span><h3>{c.t}</h3><p>{c.p}</p></a>)}
+    </div>
+    <Stats />
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <div class="lab rv">How it works</div>
+    <h2 data-split>Three steps to freedom.</h2>
+    <div class="steps">
+      {steps.map((s) => (
+        <div class="step rv">
+          <span class="n">{s.k}</span>
+          <span class="ico"><Icon name={s.icon} size={20} /></span>
+          <h3>{s.t}</h3>
+          <p>{s.p}</p>
+        </div>
+      ))}
+    </div>
+  </div></section>
+
+  <Faq />
+  <Cta />
+</Base>
+<script>
+  document.getElementById("copy")?.addEventListener("click", async (e) => {
+    const b = e.currentTarget as HTMLButtonElement;
+    const text = document.getElementById("ca")?.textContent ?? "";
+    try {
+      if (navigator.clipboard) await navigator.clipboard.writeText(text);
+      b.textContent = "Copied";
+    } catch {
+      b.textContent = "Copy failed";
+    }
+    setTimeout(() => (b.textContent = "Copy"), 1400);
+  });
+</script>

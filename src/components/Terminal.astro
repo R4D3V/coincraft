@@ -1,0 +1,56 @@
+---
+interface Props {
+  lines?: [string, string][];
+}
+const defaultLines: [string, string][] = [
+  ["$ git clone github.com/storytold/wordcraft", "cmd"],
+  ["Cloning into 'wordcraft'... done.", "mut"],
+  ["$ cargo build --release", "cmd"],
+  ["✔ 16 apps compiled · 0 telemetry", "ok"],
+  ["$ rm -rf subscription && echo yours", "cmd"],
+  ["✔ Owned. Forked. Yours.", "ok"],
+];
+const { lines = defaultLines } = Astro.props;
+---
+<div class="term hero-fade" aria-hidden="true">
+  <div class="term-bar"><i></i><i></i><i></i><span>~/coin-craft</span></div>
+  <pre class="term-body" id="term" data-lines={JSON.stringify(lines)}></pre>
+</div>
+<script>
+  const el = document.getElementById("term");
+  const lines: [string, string][] = el?.dataset.lines ? JSON.parse(el.dataset.lines) : [];
+  const row = (t: string, c: string) => {
+    const d = document.createElement("div");
+    d.className = `ln ${c}`;
+    d.textContent = t;
+    return d;
+  };
+  if (el && lines.length) {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      lines.forEach(([t, c]) => el.append(row(t, c)));
+      const cur = document.createElement("span");
+      cur.className = "cur"; cur.textContent = "_";
+      el.append(cur);
+    } else {
+      const cur = document.createElement("span");
+      cur.className = "cur"; cur.textContent = "▋";
+      let i = 0;
+      const next = () => {
+        if (i >= lines.length) { el.append(cur); return; }
+        const [text, cls] = lines[i++];
+        const line = row("", cls);
+        line.append(cur);
+        el.append(line);
+        let j = 0;
+        const tick = () => {
+          if (j < text.length) {
+            line.insertBefore(document.createTextNode(text[j++]), cur);
+            setTimeout(tick, text.startsWith("$") ? 28 : 13);
+          } else setTimeout(next, 430);
+        };
+        setTimeout(tick, 340);
+      };
+      next();
+    }
+  }
+</script>

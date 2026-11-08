@@ -1,0 +1,21 @@
+---
+import { socials } from "../data/site";
+import Icon from "./Icon.astro";
+---
+<footer class="foot"><div class="wrap">
+  <div>
+    <a href="/" class="logo"><i></i>COIN CRAFT</a>
+    <small>COIN CRAFT is a meme coin made for fun and community. It has no intrinsic value or expectation of financial return, and nothing here is financial advice. Exchange listings shown are targets and are not guaranteed. Always do your own research.</small>
+  </div>
+  <div class="links">
+    <a href="https://getartcraft.com" target="_blank" rel="noopener">ArtCraft</a>
+    <div class="socs">
+      <a class="soc" href={socials.x} target="_blank" rel="noopener" aria-label="X"><Icon name="x" size={15} /></a>
+      <a class="soc" href={socials.github} target="_blank" rel="noopener" aria-label="GitHub"><Icon name="github" size={17} /></a>
+      <a class="soc" href={socials.discord} target="_blank" rel="noopener" aria-label="Discord"><Icon name="discord" size={17} /></a>
+    </div>
+    <a class="totop" href="#top">Back to top <Icon name="arrow-up" size={14} /></a>
+  </div>
+</div>
+<div class="wrap"><div class="mark" aria-hidden="true">COIN CRAFT</div></div>
+</footer>

@@ -1,0 +1,6 @@
+---
+import { stats } from "../data/site";
+---
+<div class="stats">
+  {stats.map((s) => <div class="stat rv"><strong data-n={s.n} data-s={s.s}>{s.n}{s.s}</strong><span class="lab">{s.label}</span></div>)}
+</div>

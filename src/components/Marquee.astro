@@ -1,0 +1,7 @@
+---
+import { apps } from "../data/site";
+const items = [...apps, "COIN CRAFT", "Freedom to create"];
+---
+<div class="marq"><div>
+  {[...items, ...items].map((a) => <span>{a}</span>)}
+</div></div>

@@ -1,0 +1,8 @@
+---
+const { label, title, lead } = Astro.props;
+---
+<header class="inner"><div class="wrap">
+  <div class="lab hero-fade"><b>●</b> {label}</div>
+  <h1 data-split style="margin-top:28px;font-size:clamp(44px,8vw,112px)">{title}</h1>
+  <p class="lead hero-fade" style="margin-top:28px">{lead}</p>
+</div></header>

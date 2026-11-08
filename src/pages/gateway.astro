@@ -1,0 +1,25 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHead from "../components/PageHead.astro";
+import Marquee from "../components/Marquee.astro";
+import Cta from "../components/Cta.astro";
+import Icon from "../components/Icon.astro";
+import { apps, appMeta } from "../data/site";
+const slug = (a: string) => a.toLowerCase().replace(/ /g, "-");
+---
+<Base title="Gateway" description="Sixteen open-source ArtCraft apps for artists — PhotoCraft, VectorCraft, FilmCraft and more. Holding COIN CRAFT is your pass into native, open-source tools on GitHub.">
+  <PageHead label="Gateway" title="Sixteen apps. One craft." lead="Holding COIN CRAFT is your pass into native, open-source apps from ArtCraft. Read the code, fork it, make it yours." />
+  <Marquee />
+  <section class="sec" style="border:0"><div class="wrap">
+    <div class="grid-apps">
+      {apps.map((a, i) => (
+        <a class="app rv" href={`https://getartcraft.com/apps/${slug(a)}`} target="_blank" rel="noopener">
+          <span class="cat">{appMeta[a].cat}</span>
+          <span class="ic"><Icon name={appMeta[a].icon} size={18} /></span>
+          <div><b>{a}</b><small>Open source · Rust</small><p class="txt">{appMeta[a].blurb}</p></div>
+        </a>
+      ))}
+    </div>
+  </div></section>
+  <Cta />
+</Base>
