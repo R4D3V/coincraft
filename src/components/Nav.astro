@@ -9,7 +9,7 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
     <ul>
       {nav.map((n) => <li><a href={n.href} aria-current={path === n.href ? "page" : undefined}>{n.label}</a></li>)}
     </ul>
-    <a href="/listings" class="btn p buy" data-mag>Buy $CRAFT <Icon name="arrow-up-right" size={15} /></a>
+    <a href="/buy" class="btn p buy" data-mag>Buy $CRAFT <Icon name="arrow-up-right" size={15} /></a>
     <button class="burger" id="burger" type="button" aria-label="Menu">Menu</button>
   </div>
 </header>
