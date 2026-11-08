@@ -35,18 +35,22 @@ const cards = [
       <circle cx="300" cy="560" r="5" />
       <circle class="acc" cx="520" cy="620" r="5.5" style="animation-delay:-0.6s" />
     </svg>
-    <div class="wrap">
-    <div class="lab hero-fade"><b>●</b> Meme coin · Open source · Soon on CEX</div>
-    <h1 data-split style="margin-top:28px">Craft the <span class="acc glitch" data-text="coin.">coin.</span><br />Own the code.</h1>
-    <p class="lead hero-fade" style="margin:32px 0 36px">COIN CRAFT is the gateway to open-source tools for artists on GitHub. Built by the ArtCraft team, owned by the community, free to fork forever.</p>
-    <div class="cta hero-fade">
-      <a class="btn p" data-mag href="/listings">Join the launch <Icon name="arrow-up-right" size={15} /></a>
-      <a class="btn" data-mag href="https://github.com/storytold" target="_blank" rel="noopener"><Icon name="github" size={16} /> Open source on GitHub</a>
-    </div>
-    <div class="cta hero-fade" style="margin-top:44px"><span class="chip">No subscription</span><span class="chip">Pure Rust apps</span><span class="chip">macOS · Windows · Linux</span></div>
-    <div class="ca hero-fade"><span id="ca">Contract: announced at launch</span><button id="copy" type="button">Copy</button></div>
-    <Terminal />
-  </div></header>
+    <div class="wrap hero-grid">
+      <div class="hero-left">
+        <div class="lab hero-fade"><b>●</b> Meme coin · Open source · Soon on CEX</div>
+        <h1 data-split style="margin-top:28px">Craft the <span class="acc glitch" data-text="coin.">coin.</span><br />Own the code.</h1>
+        <p class="lead hero-fade" style="margin:32px 0 36px">COIN CRAFT is the gateway to open-source tools for artists on GitHub. Built by the ArtCraft team, owned by the community, free to fork forever.</p>
+        <div class="cta hero-fade">
+          <a class="btn p" data-mag href="/listings">Join the launch <Icon name="arrow-up-right" size={15} /></a>
+          <a class="btn" data-mag href="https://github.com/storytold" target="_blank" rel="noopener"><Icon name="github" size={16} /> Open source on GitHub</a>
+        </div>
+        <div class="cta hero-fade" style="margin-top:44px"><span class="chip">No subscription</span><span class="chip">Pure Rust apps</span><span class="chip">macOS · Windows · Linux</span></div>
+        <div class="ca hero-fade"><span id="ca">Contract: announced at launch</span><button id="copy" type="button">Copy</button></div>
+      </div>
+      <div class="hero-right hero-fade">
+        <Terminal />
+      </div>
+    </div></header>
 
   <Marquee />
 

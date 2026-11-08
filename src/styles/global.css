@@ -28,7 +28,15 @@ h3 { font-size: 22px; letter-spacing: -.02em; margin-bottom: 10px; }
 .lab b { color: var(--color-acc); font-weight: 500; }
 .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 .sec { position: relative; z-index: 1; padding: 120px 0; border-top: 1px solid var(--color-line); }
-.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 150px 0 70px; position: relative; z-index: 1; }
+.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 0 60px; position: relative; z-index: 1; }
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.hero-left { display: flex; flex-direction: column; }
+.hero-right { display: flex; justify-content: center; }
+.hero-right .term { margin-top: 0; max-width: 560px; width: 100%; }
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  .hero-right { justify-content: flex-start; }
+}
 .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(var(--color-line) 1px, transparent 1px), linear-gradient(90deg, var(--color-line) 1px, transparent 1px); background-size: 72px 72px; opacity: .4; -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 42%, #000, transparent 76%); mask-image: radial-gradient(ellipse 70% 60% at 50% 42%, #000, transparent 76%); pointer-events: none; }
 .inner { padding: 170px 0 100px; position: relative; z-index: 1; }
 .inner::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(var(--color-line) 1px, transparent 1px), linear-gradient(90deg, var(--color-line) 1px, transparent 1px); background-size: 72px 72px; opacity: .3; -webkit-mask-image: linear-gradient(180deg, #000, transparent 90%); mask-image: linear-gradient(180deg, #000, transparent 90%); pointer-events: none; }
